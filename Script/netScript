@@ -1,0 +1,22 @@
+#!/bin/bash
+
+echo "Hostname"
+hostname
+echo "------------------------------------"
+echo "Display all ips for this machine" 
+hostname -i
+echo "------------------------------------"
+echo "Display device"
+ifconfig -a 
+echo "------------------------------------"
+echo "Ping another student"
+ping -c 5 192.168.1.11
+
+result=$(grep -ic "192.168.1.11		student" /etc/hosts)
+if [$result -eq 1]
+then
+echo "Nah fam"
+else
+echo "192.168.1.11	student" >> /etc/hosts
+fi
+
